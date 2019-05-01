@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>dyna-world</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+
+  <parent>
+    <artifactId>java-pom</artifactId>
+    <groupId>info.kfgodel</groupId>
+    <version>0.1.5</version>
+  </parent>
+
+  <name>Dyna World</name>
+  <description>Project to offer dyna type objects an eco-system where they can be created and used without paying attention to impl details </description>
+  <url>https://github.com/kfgodel/dyna-world</url>
+
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <scm>
+    <developerConnection>scm:git:ssh://github.com/kfgodel/dyna-world.git</developerConnection>
+    <connection>${project.scm.developerConnection}</connection>
+    <url>${project.url}</url>
+  </scm>
+
+  <properties>
+    <version.guava>27.0-jre</version.guava>
+  </properties>
+
+
+  <dependencies>
+
+    <!-- Adds dyna type objects -->
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>dyna-type</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+
+    <!-- Spec like tests -->
+    <dependency>
+      <groupId>info.kfgodel</groupId>
+      <artifactId>java-spec</artifactId>
+      <version>2.4.1</version>
+      <scope>test</scope>
+    </dependency>
+
+  </dependencies>
+
+  <developers>
+    <developer>
+      <id>dlgarcia</id>
+      <name>Dario L Garcia</name>
+      <email>dario.garcia@10pines.com</email>
+      <organization>10Pines SRL</organization>
+      <organizationUrl>https://www.10pines.com/</organizationUrl>
+      <roles>
+        <role>architect</role>
+        <role>developer</role>
+      </roles>
+    </developer>
+  </developers>
+
+</project>
