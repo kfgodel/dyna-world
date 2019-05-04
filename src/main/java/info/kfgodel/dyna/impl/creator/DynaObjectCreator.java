@@ -13,21 +13,21 @@ import java.util.Map;
  *
  * Date: 04/05/19 - 13:45
  */
-public interface DynaObjectCreator extends ObjectCreator, EnvironmentDependent {
+public abstract class DynaObjectCreator implements ObjectCreator, EnvironmentDependent {
 
   @Override
-  default <T> T create(Class<T> expectedType) throws DynaWorldException{
+  public <T> T create(Class<T> expectedType) throws DynaWorldException{
     DynaTypeInstantiator instantiator = getEnvironment().provide(DynaTypeInstantiator.class);
     Map<String, Object> initialState = createInitialStateFor(expectedType);
     return instantiator.instantiate(expectedType, initialState);
   }
 
-  default <T> Map<String, Object> createInitialStateFor(Class<T> expectedType){
-    HashMap<String, Object> map = new HashMap<>();
+  private <T> Map<String, Object> createInitialStateFor(Class<T> expectedType){
+    HashMap<String, Object> state = new HashMap<>();
     if(EnvironmentDependent.class.isAssignableFrom(expectedType)){
       // Is a subtype. Depends on  the environment
-      map.put("environment", this.getEnvironment());
+      state.put("environment", this.getEnvironment());
     }
-    return map;
+    return state;
   }
 }

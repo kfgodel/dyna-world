@@ -13,13 +13,13 @@ import info.kfgodel.dyna.impl.instantiator.DynaTypeInstantiator;
  *
  * Date: 04/05/19 - 13:28
  */
-public class ProtoCreator implements DynaObjectCreator {
+public class ProtoCreator extends DynaObjectCreator {
 
   private Environment environment;
 
   @Override
   public Environment getEnvironment() {
-    // Because the cretor doesn't exists yet, an environment can't be provided
+    // Because the creator doesn't exists yet, an environment can't be provided
     return this.environment;
   }
 
