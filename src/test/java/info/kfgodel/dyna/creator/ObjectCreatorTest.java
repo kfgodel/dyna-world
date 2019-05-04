@@ -1,9 +1,11 @@
-package info.kfgodel.dyna;
+package info.kfgodel.dyna.creator;
 
 import ar.com.dgarcia.javaspec.api.JavaSpec;
 import ar.com.dgarcia.javaspec.api.JavaSpecRunner;
+import info.kfgodel.dyna.WorldTestContext;
 import info.kfgodel.dyna.api.EnvironmentDependent;
 import info.kfgodel.dyna.impl.DefaultEnvironment;
+import info.kfgodel.dyna.testobjects.SimpleTestObject;
 import org.junit.runner.RunWith;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -30,7 +32,7 @@ public class ObjectCreatorTest extends JavaSpec<WorldTestContext> {
           assertThat(object.getValue()).isEqualTo("23");
         });
 
-        it("allows object to depend on the environment",()->{
+        it("allows created objects to depend on the environment",()->{
           EnvironmentDependent object = test().creator().create(EnvironmentDependent.class);
           assertThat(object.environment()).isSameAs(test().environment());
         });

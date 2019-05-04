@@ -33,12 +33,10 @@ public class TextMarqueeExampleTest extends JavaSpec<WorldTestContext> {
               );
           });
 
-
           it("generates a text with the current time", () -> {
             assertThat(test().marquee().getDisplayText()).isEqualTo("2015-10-21T20:05Z");
           });
         });
-
 
         itThrows(DynaWorldException.class, "when no clock is available in the environment", () -> {
           test().marquee().getDisplayText();
