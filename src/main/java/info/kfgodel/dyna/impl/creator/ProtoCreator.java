@@ -18,20 +18,20 @@ public class ProtoCreator extends DynaObjectCreator {
   private Environment environment;
 
   @Override
-  public Environment getEnvironment() {
+  public Environment environment() {
     // Because the creator doesn't exists yet, an environment can't be provided
     return this.environment;
   }
 
-  private void initializarDependencies() {
+  private void initializeDependencies() {
     // It's a dependency that this instance and the created will need
-    getEnvironment().define(DynaTypeInstantiator.class, DynaTypeInstantiator::create);
+    environment().define(DynaTypeInstantiator.class, DynaTypeInstantiator::create);
   }
 
   public static ProtoCreator from(Environment environment) {
     ProtoCreator creator = new ProtoCreator();
     creator.environment = environment;
-    creator.initializarDependencies();
+    creator.initializeDependencies();
     return creator;
   }
 }

@@ -32,7 +32,7 @@ public class ObjectCreatorTest extends JavaSpec<WorldTestContext> {
 
         it("allows object to depend on the environment",()->{
           EnvironmentDependent object = test().creator().create(EnvironmentDependent.class);
-          assertThat(object.getEnvironment()).isSameAs(test().environment());
+          assertThat(object.environment()).isSameAs(test().environment());
         });
       });
 

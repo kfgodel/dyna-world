@@ -13,5 +13,5 @@ public interface EnvironmentDependent {
    * it can access other objects as dependencies
    * @return The environment from which this object is part
    */
-  Environment getEnvironment();
+  Environment environment();
 }

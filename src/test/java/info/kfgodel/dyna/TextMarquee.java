@@ -17,7 +17,7 @@ public interface TextMarquee extends EnvironmentDependent {
    * Currently display text with the wall clock time
    */
   default String getDisplayText(){
-    Clock providedClock = getEnvironment().provide(Clock.class);
+    Clock providedClock = environment().provide(Clock.class);
     ZonedDateTime currentDatetime = convertToDateTime(providedClock.millis());
     return currentDatetime.toString();
   }
