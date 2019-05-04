@@ -20,7 +20,7 @@ public class TextMarqueeExampleTest extends JavaSpec<WorldTestContext> {
   @Override
   public void define() {
     describe("a text marquee from an environment", () -> {
-      test().marquee(() -> test().environment().provide(TextMarquee.class));
+      test().marquee(() -> test().environment().creator().create(TextMarquee.class));
 
       describe("given a default environment", () -> {
         test().environment(DefaultEnvironment::create);
@@ -28,15 +28,14 @@ public class TextMarqueeExampleTest extends JavaSpec<WorldTestContext> {
         describe("when a clock is available in the environment", () -> {
           beforeEach(() -> {
             test().environment()
-              .providedWith(() ->
-                  createFixedClock(2015, 10, 21, 20, 5),
-                Clock.class
+              .define(Clock.class, () ->
+                  createFixedClock(2015, 10, 21, 20, 5)
               );
           });
 
 
           it("generates a text with the current time", () -> {
-            assertThat(test().marquee().getDisplayText()).isEqualTo("2015");
+            assertThat(test().marquee().getDisplayText()).isEqualTo("2015-10-21T20:05Z");
           });
         });
 
@@ -44,7 +43,7 @@ public class TextMarqueeExampleTest extends JavaSpec<WorldTestContext> {
         itThrows(DynaWorldException.class, "when no clock is available in the environment", () -> {
           test().marquee().getDisplayText();
         }, e -> {
-          assertThat(e).hasMessage("");
+          assertThat(e).hasMessage("There's no definition of class java.time.Clock in the environment");
         });
       });
 
