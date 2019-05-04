@@ -3,6 +3,8 @@ package info.kfgodel.dyna;
 import ar.com.dgarcia.javaspec.api.contexts.TestContext;
 import info.kfgodel.dyna.api.Environment;
 import info.kfgodel.dyna.api.ObjectCreator;
+import info.kfgodel.dyna.testobjects.InterdependentTypeA;
+import info.kfgodel.dyna.testobjects.InterdependentTypeB;
 
 import java.util.function.Supplier;
 
@@ -20,6 +22,12 @@ public interface WorldTestContext extends TestContext {
 
   ObjectCreator creator();
   void creator(Supplier<ObjectCreator> definition);
+
+  InterdependentTypeA objectA();
+  void objectA(Supplier<InterdependentTypeA> definition);
+
+  InterdependentTypeB objectB();
+  void objectB(Supplier<InterdependentTypeB> definition);
 
 
 }
