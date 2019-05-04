@@ -3,6 +3,8 @@ package info.kfgodel.dyna.impl.creator;
 import info.kfgodel.dyna.api.Environment;
 import info.kfgodel.dyna.impl.instantiator.DynaTypeInstantiator;
 
+import static info.kfgodel.function.MemoizedSupplier.memoized;
+
 /**
  * This class is necessary to solve the paradox of who creates the creator.<br>
  * A proto creator is used to create the creator, and then it's discarded. In that way all objects, including the creator
@@ -24,8 +26,8 @@ public class ProtoCreator extends DynaObjectCreator {
   }
 
   private void initializeDependencies() {
-    // It's a dependency that this instance and the created will need
-    environment().define(DynaTypeInstantiator.class, DynaTypeInstantiator::create);
+    // We want only one instantiator available for this and created instance
+    environment().define(DynaTypeInstantiator.class, memoized(DynaTypeInstantiator::create));
   }
 
   public static ProtoCreator from(Environment environment) {

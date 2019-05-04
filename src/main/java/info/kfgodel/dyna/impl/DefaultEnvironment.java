@@ -10,6 +10,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Supplier;
 
+import static info.kfgodel.function.MemoizedSupplier.memoized;
+
 /**
  * This class represents the default environment in which objects exists and colaborate between each other
  * inside the same VM
@@ -36,9 +38,10 @@ public class DefaultEnvironment implements Environment {
   }
 
   private void initialize() {
-    this.define(ObjectCreator.class, ()->
+    this.define(ObjectCreator.class, memoized(()->
+      // Called only once
       ProtoCreator.from(this).create(DynaObjectCreator.class)
-    );
+    ));
   }
 
   public static DefaultEnvironment create() {
