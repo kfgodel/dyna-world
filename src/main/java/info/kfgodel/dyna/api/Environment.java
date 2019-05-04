@@ -21,7 +21,7 @@ public interface Environment {
    * @return An instance of the asked type taken from this environment
    * @throws DynaWorldException If the asked type doesn't have a definition on this environment
    */
-  <T> T  provide(Class<T> expectedType) throws DynaWorldException;
+  <T> T provide(Class<T> expectedType) throws DynaWorldException;
 
   /**
    * Registers on this environment a definition to provide instances of the given type.<br>
@@ -33,8 +33,10 @@ public interface Environment {
   <T> void define(Class<T> providedType, Supplier<? extends T> definition);
 
   /**
-   * Returns the creator of instances for generating new objects that are bound to this environment
+   * Facility method to easily access the provided creator on this environment
    * @return The object used to create other objects
    */
-  ObjectCreator creator();
+  default ObjectCreator creator(){
+    return this.provide(ObjectCreator.class);
+  }
 }

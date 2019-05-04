@@ -23,11 +23,11 @@ public class DefaultEnvironment implements Environment {
 
   @Override
   public <T> T provide(Class<T> expectedType) throws DynaWorldException {
-    Supplier supplier = recipes.get(expectedType);
-    if(supplier == null){
+    Supplier recipe = recipes.get(expectedType);
+    if(recipe == null){
       throw new DynaWorldException("There's no definition of " + expectedType + " in the environment");
     }
-    return (T) supplier.get();
+    return (T) recipe.get();
   }
 
   @Override
@@ -35,9 +35,10 @@ public class DefaultEnvironment implements Environment {
     recipes.put(providedType, definition);
   }
 
-  @Override
-  public ObjectCreator creator() {
-    return this.provide(ObjectCreator.class);
+  private void initialize() {
+    this.define(ObjectCreator.class, ()->
+      ProtoCreator.from(this).create(DynaObjectCreator.class)
+    );
   }
 
   public static DefaultEnvironment create() {
@@ -45,12 +46,6 @@ public class DefaultEnvironment implements Environment {
     environment.recipes = new HashMap<>();
     environment.initialize();
     return environment;
-  }
-
-  private void initialize() {
-    this.define(ObjectCreator.class, ()->
-      ProtoCreator.from(this).create(DynaObjectCreator.class)
-    );
   }
 
 }
