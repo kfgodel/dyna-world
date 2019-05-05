@@ -24,6 +24,15 @@ public class AccessOwnStateTest extends JavaSpec<WorldTestContext> {
         test().objectWithState().setName("Pepe");
         assertThat(test().objectWithState().getPropertyCount()).isEqualTo(1);
       });
+
+
+      it("can change a method definition",()->{
+        assertThat(test().objectWithState().getName()).isNull();
+
+        test().objectWithState().changeGetNameDefinition();
+
+        assertThat(test().objectWithState().getName()).isEqualTo("a hardcoded name");
+      });
     });
 
   }
