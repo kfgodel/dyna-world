@@ -3,7 +3,7 @@ package info.kfgodel.dyna.creator;
 import ar.com.dgarcia.javaspec.api.JavaSpec;
 import ar.com.dgarcia.javaspec.api.JavaSpecRunner;
 import info.kfgodel.dyna.WorldTestContext;
-import info.kfgodel.dyna.api.EnvironmentDependent;
+import info.kfgodel.dyna.api.environment.EnvironmentDependent;
 import info.kfgodel.dyna.impl.DefaultEnvironment;
 import info.kfgodel.dyna.testobjects.SimpleTestObject;
 import org.junit.runner.RunWith;

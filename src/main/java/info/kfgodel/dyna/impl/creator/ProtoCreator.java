@@ -1,6 +1,6 @@
 package info.kfgodel.dyna.impl.creator;
 
-import info.kfgodel.dyna.api.Environment;
+import info.kfgodel.dyna.api.environment.Environment;
 import info.kfgodel.dyna.impl.instantiator.DynaTypeInstantiator;
 
 import static info.kfgodel.function.MemoizedSupplier.memoized;

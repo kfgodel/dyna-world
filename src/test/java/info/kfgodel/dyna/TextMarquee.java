@@ -1,6 +1,6 @@
 package info.kfgodel.dyna;
 
-import info.kfgodel.dyna.api.EnvironmentDependent;
+import info.kfgodel.dyna.api.environment.EnvironmentDependent;
 
 import java.time.Clock;
 import java.time.Instant;
