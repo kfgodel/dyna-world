@@ -7,7 +7,6 @@ import info.kfgodel.dyna.impl.instantiator.DynaTypeInstantiator;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.function.Supplier;
 
 /**
  * This type defines the object creator following the same rules as the rest of the creatable objects
@@ -25,10 +24,6 @@ public abstract class DynaObjectCreator implements ObjectCreator, EnvironmentDep
 
   private <T> Map<String, Object> createInitialStateFor(Class<T> expectedType){
     HashMap<String, Object> state = new HashMap<>();
-    if(EnvironmentDependent.class.isAssignableFrom(expectedType)){
-      // Is a subtype. Depends on  the environment
-      state.put("environment", (Supplier)this::environment);
-    }
     return state;
   }
 }
