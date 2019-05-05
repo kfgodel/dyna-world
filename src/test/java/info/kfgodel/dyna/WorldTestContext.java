@@ -1,8 +1,9 @@
 package info.kfgodel.dyna;
 
 import ar.com.dgarcia.javaspec.api.contexts.TestContext;
-import info.kfgodel.dyna.api.Environment;
 import info.kfgodel.dyna.api.ObjectCreator;
+import info.kfgodel.dyna.api.environment.Environment;
+import info.kfgodel.dyna.dyna.SelfStateObject;
 import info.kfgodel.dyna.testobjects.InterdependentTypeA;
 import info.kfgodel.dyna.testobjects.InterdependentTypeB;
 
@@ -28,6 +29,9 @@ public interface WorldTestContext extends TestContext {
 
   InterdependentTypeB objectB();
   void objectB(Supplier<InterdependentTypeB> definition);
+
+  SelfStateObject objectWithState();
+  void objectWithState(Supplier<SelfStateObject> definition);
 
 
 }

@@ -1,4 +1,4 @@
-package info.kfgodel.dyna.api;
+package info.kfgodel.dyna.api.environment;
 
 /**
  * This interface is for objects that have dependencies on their environment to fulfill their purpose.<br>

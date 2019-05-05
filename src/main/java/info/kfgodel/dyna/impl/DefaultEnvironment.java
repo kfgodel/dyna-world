@@ -1,7 +1,7 @@
 package info.kfgodel.dyna.impl;
 
-import info.kfgodel.dyna.api.Environment;
 import info.kfgodel.dyna.api.ObjectCreator;
+import info.kfgodel.dyna.api.environment.Environment;
 import info.kfgodel.dyna.api.exceptions.DynaWorldException;
 import info.kfgodel.dyna.impl.creator.DynaObjectCreator;
 import info.kfgodel.dyna.impl.creator.ProtoCreator;

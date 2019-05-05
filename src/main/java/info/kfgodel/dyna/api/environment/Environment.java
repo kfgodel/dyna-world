@@ -1,5 +1,6 @@
-package info.kfgodel.dyna.api;
+package info.kfgodel.dyna.api.environment;
 
+import info.kfgodel.dyna.api.ObjectCreator;
 import info.kfgodel.dyna.api.exceptions.DynaWorldException;
 
 import java.util.function.Supplier;
