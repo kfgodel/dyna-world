@@ -2,6 +2,7 @@ package info.kfgodel.dyna.impl.creator;
 
 import info.kfgodel.dyna.api.DynaObject;
 import info.kfgodel.dyna.api.environment.Environment;
+import info.kfgodel.dyna.impl.creator.handlers.InternalStateMethodHandler;
 import info.kfgodel.dyna.impl.instantiator.DefaultConfiguration;
 import info.kfgodel.dyna.impl.instantiator.DynaTypeInstantiator;
 
@@ -35,6 +36,8 @@ public class ProtoCreator extends DynaObjectCreator {
   private DynaTypeInstantiator createInstantiator() {
     DefaultConfiguration configuration = DefaultConfiguration.create()
       .withInterface(DynaObject.class);
+    // Before getter handlers
+    configuration.getChainOfHandlers().add(0,InternalStateMethodHandler.create());
     return DynaTypeInstantiator.create(configuration);
   }
 

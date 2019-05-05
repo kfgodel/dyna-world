@@ -38,6 +38,11 @@ public class ObjectCreatorTest extends JavaSpec<WorldTestContext> {
           assertThat(created).isInstanceOf(DynaObject.class);
         });
 
+        it("gives dyna objects access to their internal state",()->{
+          DynaObject created = (DynaObject) test().creator().create(SimpleTestObject.class);
+          assertThat(created.getInternalState()).isEmpty();
+        });
+
         it("allows created objects to depend on the environment",()->{
           EnvironmentDependent object = test().creator().create(EnvironmentDependent.class);
           assertThat(object.environment()).isSameAs(test().environment());
