@@ -6,6 +6,9 @@ import info.kfgodel.dyna.api.environment.Environment;
 import info.kfgodel.dyna.dyna.SelfStateObject;
 import info.kfgodel.dyna.testobjects.InterdependentTypeA;
 import info.kfgodel.dyna.testobjects.InterdependentTypeB;
+import info.kfgodel.dyna.testobjects.Lycanthrope;
+import info.kfgodel.dyna.testobjects.SimpleTestObject;
+import info.kfgodel.dyna.testobjects.Wolf;
 
 import java.util.Map;
 import java.util.function.Supplier;
@@ -33,6 +36,25 @@ public interface WorldTestContext extends TestContext {
 
   SelfStateObject objectWithState();
   void objectWithState(Supplier<SelfStateObject> definition);
+
+  SimpleTestObject simpleObject();
+  void simpleObject(Supplier<SimpleTestObject> definition);
+
+  SimpleTestObject otherObject();
+  void otherObject(Supplier<SimpleTestObject> definition);
+
+
+  Map<String, Object> initialState();
+  void initialState(Supplier<Map<String, Object>> definition);
+
+  Map<String, Object> otherInitialState();
+  void otherInitialState(Supplier<Map<String, Object>> definition);
+
+  Lycanthrope metamorph();
+  void metamorph(Supplier<Lycanthrope> definition);
+
+  Wolf morphed();
+  void morphed(Supplier<Wolf> definition);
 
 
 }
