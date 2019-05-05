@@ -20,7 +20,7 @@ import static info.kfgodel.function.MemoizedSupplier.memoized;
  *
  * Date: 04/05/19 - 13:28
  */
-public class ProtoCreator extends DynaObjectCreator {
+public class ProtoCreator implements DynaObjectCreator {
 
   private Environment environment;
 
