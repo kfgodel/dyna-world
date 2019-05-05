@@ -3,6 +3,7 @@ package info.kfgodel.dyna.creator;
 import ar.com.dgarcia.javaspec.api.JavaSpec;
 import ar.com.dgarcia.javaspec.api.JavaSpecRunner;
 import info.kfgodel.dyna.WorldTestContext;
+import info.kfgodel.dyna.api.DynaObject;
 import info.kfgodel.dyna.api.environment.EnvironmentDependent;
 import info.kfgodel.dyna.impl.DefaultEnvironment;
 import info.kfgodel.dyna.testobjects.SimpleTestObject;
@@ -32,10 +33,16 @@ public class ObjectCreatorTest extends JavaSpec<WorldTestContext> {
           assertThat(object.getValue()).isEqualTo("23");
         });
 
+        it("makes all created objects implement DynaObject interface",()->{
+          SimpleTestObject created = test().creator().create(SimpleTestObject.class);
+          assertThat(created).isInstanceOf(DynaObject.class);
+        });
+
         it("allows created objects to depend on the environment",()->{
           EnvironmentDependent object = test().creator().create(EnvironmentDependent.class);
           assertThat(object.environment()).isSameAs(test().environment());
         });
+
       });
 
     });

@@ -9,7 +9,9 @@ import info.kfgodel.dyna.api.exceptions.DynaWorldException;
 public interface ObjectCreator {
 
   /**
-   * Creates an instance of the given type
+   * Creates an instance of the given type.<br>
+   *   The created instance is also a subtype of {@link DynaObject}
+   *
    * @param expectedType The class that indicates the type of expected instance
    * @param <T> The type of returned instance
    * @return The created object
