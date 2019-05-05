@@ -7,6 +7,7 @@ import info.kfgodel.dyna.dyna.SelfStateObject;
 import info.kfgodel.dyna.testobjects.InterdependentTypeA;
 import info.kfgodel.dyna.testobjects.InterdependentTypeB;
 
+import java.util.Map;
 import java.util.function.Supplier;
 
 /**
