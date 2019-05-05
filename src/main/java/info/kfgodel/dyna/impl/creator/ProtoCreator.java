@@ -1,6 +1,8 @@
 package info.kfgodel.dyna.impl.creator;
 
+import info.kfgodel.dyna.api.DynaObject;
 import info.kfgodel.dyna.api.environment.Environment;
+import info.kfgodel.dyna.impl.instantiator.DefaultConfiguration;
 import info.kfgodel.dyna.impl.instantiator.DynaTypeInstantiator;
 
 import static info.kfgodel.function.MemoizedSupplier.memoized;
@@ -27,7 +29,13 @@ public class ProtoCreator extends DynaObjectCreator {
 
   private void initializeDependencies() {
     // We want only one instantiator available for this and created instance
-    environment().define(DynaTypeInstantiator.class, memoized(DynaTypeInstantiator::create));
+    environment().define(DynaTypeInstantiator.class, memoized(this::createInstantiator));
+  }
+
+  private DynaTypeInstantiator createInstantiator() {
+    DefaultConfiguration configuration = DefaultConfiguration.create()
+      .withInterface(DynaObject.class);
+    return DynaTypeInstantiator.create(configuration);
   }
 
   public static ProtoCreator from(Environment environment) {
