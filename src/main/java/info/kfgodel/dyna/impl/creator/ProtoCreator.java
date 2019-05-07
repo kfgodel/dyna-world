@@ -12,6 +12,8 @@ import info.kfgodel.dyna.impl.proxy.handlers.EqualsMethodHandler;
 import info.kfgodel.dyna.impl.proxy.handlers.GetterPropertyHandler;
 import info.kfgodel.dyna.impl.proxy.handlers.HashcodeMethodHandler;
 
+import java.util.Map;
+
 import static info.kfgodel.function.MemoizedSupplier.memoized;
 
 /**
@@ -54,5 +56,15 @@ public class ProtoCreator implements DynaObjectCreator {
     creator.environment = environment;
     creator.initializeDependencies();
     return creator;
+  }
+
+  @Override
+  public String getObjectId() {
+    throw new IllegalStateException("The proto creator doesn't have an id because it's not a real dyna object. It should be used as temporary creator");
+  }
+
+  @Override
+  public Map<String, Object> getInternalState() {
+    throw new IllegalStateException("The proto creator doesn't have an internal state because it's not a real dyna object. It should be used as temporary creator");
   }
 }

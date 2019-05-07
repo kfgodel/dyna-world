@@ -10,7 +10,7 @@ import java.util.Map;
  * This type creates instances of other objects, and it's the only way to have new objects on an environment
  * Date: 04/05/19 - 13:13
  */
-public interface ObjectCreator {
+public interface ObjectCreator extends DynaObject {
 
   /**
    * Creates an instance of the given type.<br>

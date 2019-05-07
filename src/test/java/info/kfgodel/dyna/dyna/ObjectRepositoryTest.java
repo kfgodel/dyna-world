@@ -4,6 +4,7 @@ import ar.com.dgarcia.javaspec.api.JavaSpec;
 import ar.com.dgarcia.javaspec.api.JavaSpecRunner;
 import info.kfgodel.dyna.WorldTestContext;
 import info.kfgodel.dyna.api.DynaObject;
+import info.kfgodel.dyna.api.creator.ObjectCreator;
 import info.kfgodel.dyna.impl.DefaultEnvironment;
 import info.kfgodel.dyna.testobjects.SimpleTestObject;
 import org.junit.runner.RunWith;
@@ -23,8 +24,14 @@ public class ObjectRepositoryTest extends JavaSpec<WorldTestContext> {
       describe("given a default environment", () -> {
         test().environment(DefaultEnvironment::create);
 
-        it("starts with only the creator state", () -> {
+        it("starts without any state", () -> {
+          assertThat(test().repository().getStates()).isEmpty();
+        });
+
+        it("collects the creator state as the first state when it's accessed for the first time",()->{
+          ObjectCreator creator = test().environment().creator();// Forces the creation of the creator
           assertThat(test().repository().getStates()).hasSize(1);
+          assertThat(test().repository().getStates()).containsOnlyOnce(creator.getInternalState());
         });
 
         it("collects the state of newly created objects",()->{
@@ -34,15 +41,16 @@ public class ObjectRepositoryTest extends JavaSpec<WorldTestContext> {
           second.setValue("2");
 
           assertThat(test().repository().getStates()).hasSize(3);
-          assertThat(test().repository().getStates()).element(1).hasFieldOrPropertyWithValue("value","1");
-          assertThat(test().repository().getStates()).element(2).hasFieldOrPropertyWithValue("value","2");
+          assertThat(test().repository().getStates()).containsOnlyOnce(first.getInternalState());
+          assertThat(test().repository().getStates()).containsOnlyOnce(second.getInternalState());
         });
 
         it("doesn't duplicate the state when shared between objects",()->{
           DynaObject first = test().environment().creator().create(DynaObject.class);
-          DynaObject sharedStateSecond = test().environment().creator().create(DynaObject.class, first.getInternalState());
+          DynaObject secondWithShared = test().environment().creator().create(DynaObject.class, first.getInternalState());
 
           assertThat(test().repository().getStates()).hasSize(2);
+          assertThat(test().repository().getStates()).containsOnlyOnce(secondWithShared.getInternalState());
         });
 
       });
@@ -50,4 +58,5 @@ public class ObjectRepositoryTest extends JavaSpec<WorldTestContext> {
     });
 
   }
+
 }
