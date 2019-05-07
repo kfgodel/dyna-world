@@ -9,6 +9,7 @@ import info.kfgodel.dyna.testobjects.InterdependentTypeA;
 import info.kfgodel.dyna.testobjects.InterdependentTypeB;
 import info.kfgodel.dyna.testobjects.Lycanthrope;
 import info.kfgodel.dyna.testobjects.SimpleTestObject;
+import info.kfgodel.dyna.testobjects.TextMarquee;
 import info.kfgodel.dyna.testobjects.Wolf;
 
 import java.util.Map;

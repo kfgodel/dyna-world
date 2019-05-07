@@ -4,6 +4,7 @@ import ar.com.dgarcia.javaspec.api.JavaSpec;
 import ar.com.dgarcia.javaspec.api.JavaSpecRunner;
 import info.kfgodel.dyna.api.exceptions.DynaWorldException;
 import info.kfgodel.dyna.impl.DefaultEnvironment;
+import info.kfgodel.dyna.testobjects.TextMarquee;
 import org.junit.runner.RunWith;
 
 import java.time.Clock;
