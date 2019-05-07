@@ -19,10 +19,10 @@ public class AccessOwnStateTest extends JavaSpec<WorldTestContext> {
       test().objectWithState(() -> DefaultEnvironment.create().creator().create(SelfStateObject.class));
 
       it("can instrospect its own state map", () -> {
-        assertThat(test().objectWithState().getPropertyCount()).isEqualTo(0);
+        assertThat(test().objectWithState().getPropertyCount()).isEqualTo(1);
 
         test().objectWithState().setName("Pepe");
-        assertThat(test().objectWithState().getPropertyCount()).isEqualTo(1);
+        assertThat(test().objectWithState().getPropertyCount()).isEqualTo(2);
       });
 
 
