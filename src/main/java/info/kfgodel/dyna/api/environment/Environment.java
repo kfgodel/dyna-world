@@ -1,7 +1,8 @@
 package info.kfgodel.dyna.api.environment;
 
-import info.kfgodel.dyna.api.ObjectCreator;
+import info.kfgodel.dyna.api.creator.ObjectCreator;
 import info.kfgodel.dyna.api.exceptions.DynaWorldException;
+import info.kfgodel.dyna.api.repo.ObjectRepository;
 
 import java.util.function.Supplier;
 
@@ -39,5 +40,14 @@ public interface Environment {
    */
   default ObjectCreator creator(){
     return this.provide(ObjectCreator.class);
+  }
+
+  /**
+   * Facility method to access the object repository.<br>
+   *   The repository allows access to all created objects and allows transformations to their types
+   * @return The repository of this environment
+   */
+  default ObjectRepository repository(){
+    return this.provide(ObjectRepository.class);
   }
 }

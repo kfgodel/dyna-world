@@ -1,9 +1,10 @@
 package info.kfgodel.dyna.impl.creator;
 
 import info.kfgodel.dyna.api.DynaObject;
-import info.kfgodel.dyna.api.ObjectCreator;
+import info.kfgodel.dyna.api.creator.ObjectCreator;
 import info.kfgodel.dyna.api.environment.EnvironmentDependent;
 import info.kfgodel.dyna.api.exceptions.DynaWorldException;
+import info.kfgodel.dyna.api.repo.ObjectRepository;
 import info.kfgodel.dyna.impl.instantiator.DynaTypeInstantiator;
 
 import java.util.Map;
@@ -23,6 +24,9 @@ public interface DynaObjectCreator extends ObjectCreator, EnvironmentDependent {
       initialState.put(DynaObject.OBJECT_ID_PROPERTY, UUID.randomUUID().toString());
     }
     DynaTypeInstantiator instantiator = environment().provide(DynaTypeInstantiator.class);
-    return instantiator.instantiate(expectedType, initialState);
+    T instantiated = instantiator.instantiate(expectedType, initialState);
+    // Record the instance on the repository
+    environment().provide(ObjectRepository.class).register(instantiated);
+    return instantiated;
   }
 }
