@@ -1,10 +1,9 @@
-package info.kfgodel.dyna.dyna;
+package info.kfgodel.dyna;
 
 import ar.com.dgarcia.javaspec.api.JavaSpec;
 import ar.com.dgarcia.javaspec.api.JavaSpecRunner;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
-import info.kfgodel.dyna.WorldTestContext;
 import info.kfgodel.dyna.impl.DefaultEnvironment;
 import info.kfgodel.dyna.testobjects.Lycanthrope;
 import info.kfgodel.dyna.testobjects.Wolf;

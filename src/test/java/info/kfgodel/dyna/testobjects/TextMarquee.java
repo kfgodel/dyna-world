@@ -1,4 +1,4 @@
-package info.kfgodel.dyna;
+package info.kfgodel.dyna.testobjects;
 
 import info.kfgodel.dyna.api.environment.EnvironmentDependent;
 
