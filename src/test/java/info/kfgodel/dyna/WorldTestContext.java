@@ -1,8 +1,9 @@
 package info.kfgodel.dyna;
 
 import ar.com.dgarcia.javaspec.api.contexts.TestContext;
-import info.kfgodel.dyna.api.ObjectCreator;
+import info.kfgodel.dyna.api.creator.ObjectCreator;
 import info.kfgodel.dyna.api.environment.Environment;
+import info.kfgodel.dyna.api.repo.ObjectRepository;
 import info.kfgodel.dyna.dyna.SelfStateObject;
 import info.kfgodel.dyna.testobjects.InterdependentTypeA;
 import info.kfgodel.dyna.testobjects.InterdependentTypeB;
@@ -55,6 +56,9 @@ public interface WorldTestContext extends TestContext {
 
   Wolf morphed();
   void morphed(Supplier<Wolf> definition);
+
+  ObjectRepository repository();
+  void repository(Supplier<ObjectRepository> definition);
 
 
 }

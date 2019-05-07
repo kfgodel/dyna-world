@@ -1,5 +1,6 @@
-package info.kfgodel.dyna.api;
+package info.kfgodel.dyna.api.creator;
 
+import info.kfgodel.dyna.api.DynaObject;
 import info.kfgodel.dyna.api.exceptions.DynaWorldException;
 
 import java.util.HashMap;
