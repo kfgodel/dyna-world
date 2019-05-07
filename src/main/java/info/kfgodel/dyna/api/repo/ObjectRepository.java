@@ -21,4 +21,11 @@ public interface ObjectRepository {
    * @return The streams of each unique state
    */
   Stream<Map<String,Object>> getStates();
+
+  /**
+   * Adds the given instance to this repository for registering its state.<br>
+   *   Only the environment creator should call this method
+   * @param instantiated The newly created instance
+   */
+  void register(Object instantiated);
 }
