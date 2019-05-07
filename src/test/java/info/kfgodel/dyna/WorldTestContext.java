@@ -5,6 +5,7 @@ import info.kfgodel.dyna.api.creator.ObjectCreator;
 import info.kfgodel.dyna.api.environment.Environment;
 import info.kfgodel.dyna.api.repo.ObjectRepository;
 import info.kfgodel.dyna.dyna.SelfStateObject;
+import info.kfgodel.dyna.testobjects.ClarkKent;
 import info.kfgodel.dyna.testobjects.InterdependentTypeA;
 import info.kfgodel.dyna.testobjects.InterdependentTypeB;
 import info.kfgodel.dyna.testobjects.Lycanthrope;
@@ -60,6 +61,9 @@ public interface WorldTestContext extends TestContext {
 
   ObjectRepository repository();
   void repository(Supplier<ObjectRepository> definition);
+
+  ClarkKent clark();
+  void clark(Supplier<ClarkKent> definition);
 
 
 }

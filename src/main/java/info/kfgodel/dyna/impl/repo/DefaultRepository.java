@@ -3,6 +3,7 @@ package info.kfgodel.dyna.impl.repo;
 import info.kfgodel.dyna.api.DynaObject;
 import info.kfgodel.dyna.api.repo.ObjectRepository;
 
+import java.util.HashSet;
 import java.util.Map;
 import java.util.WeakHashMap;
 import java.util.stream.Stream;
@@ -17,7 +18,7 @@ public class DefaultRepository implements ObjectRepository {
 
   @Override
   public Stream<Map<String, Object>> getStates() {
-    return states.keySet().stream();
+    return new HashSet<>(states.keySet()).stream();
   }
 
   @Override
