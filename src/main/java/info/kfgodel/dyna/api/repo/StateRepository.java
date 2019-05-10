@@ -9,7 +9,7 @@ import java.util.stream.Stream;
  *
  * Date: 06/05/19 - 21:53
  */
-public interface ObjectRepository {
+public interface StateRepository {
 
 
   /**
@@ -27,5 +27,5 @@ public interface ObjectRepository {
    *   Only the environment creator should call this method
    * @param instantiated The newly created instance
    */
-  void register(Object instantiated);
+  void register(Map<String,Object> instantiated);
 }

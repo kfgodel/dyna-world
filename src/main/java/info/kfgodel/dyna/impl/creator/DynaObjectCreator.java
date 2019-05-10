@@ -4,7 +4,7 @@ import info.kfgodel.dyna.api.DynaObject;
 import info.kfgodel.dyna.api.creator.ObjectCreator;
 import info.kfgodel.dyna.api.environment.EnvironmentDependent;
 import info.kfgodel.dyna.api.exceptions.DynaWorldException;
-import info.kfgodel.dyna.api.repo.ObjectRepository;
+import info.kfgodel.dyna.api.repo.StateRepository;
 import info.kfgodel.dyna.impl.instantiator.DynaTypeInstantiator;
 
 import java.util.Map;
@@ -25,8 +25,8 @@ public interface DynaObjectCreator extends ObjectCreator, EnvironmentDependent {
     }
     DynaTypeInstantiator instantiator = environment().provide(DynaTypeInstantiator.class);
     T instantiated = instantiator.instantiate(expectedType, initialState);
-    // Record the instance on the repository
-    environment().provide(ObjectRepository.class).register(instantiated);
+    // Record the state used for the new object on the repo
+    environment().provide(StateRepository.class).register(initialState);
     return instantiated;
   }
 }
