@@ -4,6 +4,7 @@ import ar.com.dgarcia.javaspec.api.contexts.TestContext;
 import info.kfgodel.dyna.api.creator.ObjectCreator;
 import info.kfgodel.dyna.api.environment.Environment;
 import info.kfgodel.dyna.api.repo.StateRepository;
+import info.kfgodel.dyna.api.repo.TypePrism;
 import info.kfgodel.dyna.dyna.SelfStateObject;
 import info.kfgodel.dyna.testobjects.ClarkKent;
 import info.kfgodel.dyna.testobjects.InterdependentTypeA;
@@ -64,6 +65,9 @@ public interface WorldTestContext extends TestContext {
 
   ClarkKent clark();
   void clark(Supplier<ClarkKent> definition);
+
+  TypePrism prism();
+  void prism(Supplier<TypePrism> definition);
 
 
 }

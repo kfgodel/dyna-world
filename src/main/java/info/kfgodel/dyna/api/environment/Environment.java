@@ -3,6 +3,7 @@ package info.kfgodel.dyna.api.environment;
 import info.kfgodel.dyna.api.creator.ObjectCreator;
 import info.kfgodel.dyna.api.exceptions.DynaWorldException;
 import info.kfgodel.dyna.api.repo.StateRepository;
+import info.kfgodel.dyna.api.repo.TypePrism;
 
 import java.util.function.Supplier;
 
@@ -49,5 +50,14 @@ public interface Environment {
    */
   default StateRepository repository(){
     return this.provide(StateRepository.class);
+  }
+
+  /**
+   * Facility method to access the type prism existing in this environment.<br>
+   *   The prism allows access to objects with matching type.<br>
+   * @return The type prism to get instances of a type
+   */
+  default TypePrism prism(){
+    return this.provide(TypePrism.class);
   }
 }

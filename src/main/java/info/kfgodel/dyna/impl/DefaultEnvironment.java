@@ -4,6 +4,7 @@ import info.kfgodel.dyna.api.creator.ObjectCreator;
 import info.kfgodel.dyna.api.environment.Environment;
 import info.kfgodel.dyna.api.exceptions.DynaWorldException;
 import info.kfgodel.dyna.api.repo.StateRepository;
+import info.kfgodel.dyna.api.repo.TypePrism;
 import info.kfgodel.dyna.impl.creator.DynaObjectCreator;
 import info.kfgodel.dyna.impl.creator.ProtoCreator;
 import info.kfgodel.dyna.impl.repo.DefaultRepository;
@@ -40,10 +41,14 @@ public class DefaultEnvironment implements Environment {
   }
 
   private void initialize() {
-    this.define(StateRepository.class, memoized(DefaultRepository::create));
     this.define(ObjectCreator.class, memoized(()->
       // Called only once
       ProtoCreator.from(this).create(DynaObjectCreator.class)
+    ));
+    this.define(StateRepository.class, memoized(DefaultRepository::create));
+    this.define(TypePrism.class, memoized(()->
+      // Create it as any normal object
+      this.provide(ObjectCreator.class).create(TypePrism.class)
     ));
   }
 
