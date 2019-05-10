@@ -27,5 +27,5 @@ public interface StateRepository {
    *   Only the environment creator should call this method
    * @param instantiated The newly created instance
    */
-  void register(Object instantiated);
+  void register(Map<String,Object> instantiated);
 }

@@ -25,8 +25,8 @@ public interface DynaObjectCreator extends ObjectCreator, EnvironmentDependent {
     }
     DynaTypeInstantiator instantiator = environment().provide(DynaTypeInstantiator.class);
     T instantiated = instantiator.instantiate(expectedType, initialState);
-    // Record the instance on the repository
-    environment().provide(StateRepository.class).register(instantiated);
+    // Record the state used for the new object on the repo
+    environment().provide(StateRepository.class).register(initialState);
     return instantiated;
   }
 }

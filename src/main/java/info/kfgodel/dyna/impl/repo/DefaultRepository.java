@@ -1,7 +1,8 @@
 package info.kfgodel.dyna.impl.repo;
 
-import info.kfgodel.dyna.api.DynaObject;
 import info.kfgodel.dyna.api.repo.StateRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.HashSet;
 import java.util.Map;
@@ -13,6 +14,7 @@ import java.util.stream.Stream;
  * Date: 06/05/19 - 22:27
  */
 public class DefaultRepository implements StateRepository {
+  public static Logger LOG = LoggerFactory.getLogger(DefaultRepository.class);
 
   private WeakHashMap<Map<String, Object>, Object> states;
 
@@ -22,12 +24,10 @@ public class DefaultRepository implements StateRepository {
   }
 
   @Override
-  public void register(Object instantiated) {
-    if(instantiated instanceof DynaObject){
-      DynaObject dyna = (DynaObject) instantiated;
-      states.put(dyna.getInternalState(), dyna);
-    }else{
-      throw new IllegalArgumentException("Only dyna objects are supported on this repository");
+  public void register(Map<String,Object> state) {
+    Object previousState = states.put(state, null);
+    if(previousState != state){
+      LOG.warn("We have different state instances with equal content: {}", state);
     }
   }
 
