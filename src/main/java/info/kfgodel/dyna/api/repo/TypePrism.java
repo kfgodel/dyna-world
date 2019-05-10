@@ -46,12 +46,12 @@ public interface TypePrism extends EnvironmentDependent, DynaObject {
    * @return The stream of environment objects that match the type predicate
    */
   default <T> Stream<T> getInstancesOf(Class<T> expectedType){
-    Predicate<Map<String, Object>> isAcceptableForType = getTypeDefinitions().get(expectedType);
-    if(isAcceptableForType == null){
+    Predicate<Map<String, Object>> typeDefinitionPredicate = getTypeDefinitions().get(expectedType);
+    if(typeDefinitionPredicate == null){
       throw new DynaWorldException("Type["+expectedType+"] has no predicate to define which objects are included");
     }
     return environment().repository().getStates()
-      .filter(isAcceptableForType)
+      .filter(typeDefinitionPredicate)
       .map(state -> environment().creator().create(expectedType, state));
   }
 }
