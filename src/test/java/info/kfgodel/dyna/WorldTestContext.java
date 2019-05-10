@@ -3,7 +3,7 @@ package info.kfgodel.dyna;
 import ar.com.dgarcia.javaspec.api.contexts.TestContext;
 import info.kfgodel.dyna.api.creator.ObjectCreator;
 import info.kfgodel.dyna.api.environment.Environment;
-import info.kfgodel.dyna.api.repo.ObjectRepository;
+import info.kfgodel.dyna.api.repo.StateRepository;
 import info.kfgodel.dyna.dyna.SelfStateObject;
 import info.kfgodel.dyna.testobjects.ClarkKent;
 import info.kfgodel.dyna.testobjects.InterdependentTypeA;
@@ -59,8 +59,8 @@ public interface WorldTestContext extends TestContext {
   Wolf morphed();
   void morphed(Supplier<Wolf> definition);
 
-  ObjectRepository repository();
-  void repository(Supplier<ObjectRepository> definition);
+  StateRepository repository();
+  void repository(Supplier<StateRepository> definition);
 
   ClarkKent clark();
   void clark(Supplier<ClarkKent> definition);

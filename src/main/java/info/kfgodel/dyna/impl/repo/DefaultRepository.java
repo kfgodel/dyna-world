@@ -1,7 +1,7 @@
 package info.kfgodel.dyna.impl.repo;
 
 import info.kfgodel.dyna.api.DynaObject;
-import info.kfgodel.dyna.api.repo.ObjectRepository;
+import info.kfgodel.dyna.api.repo.StateRepository;
 
 import java.util.HashSet;
 import java.util.Map;
@@ -12,7 +12,7 @@ import java.util.stream.Stream;
  * This type implements the repository with a weak hash map
  * Date: 06/05/19 - 22:27
  */
-public class DefaultRepository implements ObjectRepository {
+public class DefaultRepository implements StateRepository {
 
   private WeakHashMap<Map<String, Object>, Object> states;
 

@@ -2,7 +2,7 @@ package info.kfgodel.dyna.api.environment;
 
 import info.kfgodel.dyna.api.creator.ObjectCreator;
 import info.kfgodel.dyna.api.exceptions.DynaWorldException;
-import info.kfgodel.dyna.api.repo.ObjectRepository;
+import info.kfgodel.dyna.api.repo.StateRepository;
 
 import java.util.function.Supplier;
 
@@ -47,7 +47,7 @@ public interface Environment {
    *   The repository allows access to all created objects and allows transformations to their types
    * @return The repository of this environment
    */
-  default ObjectRepository repository(){
-    return this.provide(ObjectRepository.class);
+  default StateRepository repository(){
+    return this.provide(StateRepository.class);
   }
 }

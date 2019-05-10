@@ -15,10 +15,10 @@ import static org.assertj.core.api.Assertions.assertThat;
  * Date: 06/05/19 - 21:52
  */
 @RunWith(JavaSpecRunner.class)
-public class ObjectRepositoryTest extends JavaSpec<WorldTestContext> {
+public class StateRepositoryTest extends JavaSpec<WorldTestContext> {
   @Override
   public void define() {
-    describe("an object repository", () -> {
+    describe("a state repository", () -> {
       test().repository(() -> test().environment().repository());
 
       describe("given a default environment", () -> {
