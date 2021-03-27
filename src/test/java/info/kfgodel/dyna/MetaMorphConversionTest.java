@@ -44,6 +44,7 @@ public class MetaMorphConversionTest extends JavaSpec<WorldTestContext> {
 
         it("is affected by morphed object state changes", () -> {
           test().morphed().receiveSilverBullet();
+          assertThat(test().morphed().getDead()).isTrue();
           assertThat(test().metamorph().getDead()).isTrue();
         });
 

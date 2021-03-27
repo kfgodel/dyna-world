@@ -29,9 +29,7 @@ public class TextMarqueeExampleTest extends JavaSpec<WorldTestContext> {
         describe("when a clock is available in the environment", () -> {
           beforeEach(() -> {
             test().environment()
-              .define(Clock.class, () ->
-                  createFixedClock(2015, 10, 21, 20, 5)
-              );
+              .define(Clock.class, () -> createFixedClock(2015, 10, 21, 20, 5));
           });
 
           it("generates a text with the current time", () -> {

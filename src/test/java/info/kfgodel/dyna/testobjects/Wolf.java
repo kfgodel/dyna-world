@@ -20,4 +20,5 @@ public interface Wolf extends DynaObject {
     return getHeight() * 2;
   }
 
+  boolean getDead();
 }
