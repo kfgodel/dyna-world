@@ -1,13 +1,13 @@
 package info.kfgodel.dyna.creator;
 
-import ar.com.dgarcia.javaspec.api.JavaSpec;
-import ar.com.dgarcia.javaspec.api.JavaSpecRunner;
 import com.google.common.collect.ImmutableMap;
 import info.kfgodel.dyna.WorldTestContext;
 import info.kfgodel.dyna.api.DynaObject;
 import info.kfgodel.dyna.api.environment.EnvironmentDependent;
 import info.kfgodel.dyna.impl.DefaultEnvironment;
 import info.kfgodel.dyna.testobjects.SimpleTestObject;
+import info.kfgodel.jspek.api.JavaSpec;
+import info.kfgodel.jspek.api.JavaSpecRunner;
 import org.junit.runner.RunWith;
 
 import java.util.Map;

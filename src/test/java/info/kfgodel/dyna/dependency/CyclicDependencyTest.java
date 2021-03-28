@@ -1,11 +1,11 @@
 package info.kfgodel.dyna.dependency;
 
-import ar.com.dgarcia.javaspec.api.JavaSpec;
-import ar.com.dgarcia.javaspec.api.JavaSpecRunner;
 import info.kfgodel.dyna.WorldTestContext;
 import info.kfgodel.dyna.impl.DefaultEnvironment;
 import info.kfgodel.dyna.testobjects.InterdependentTypeA;
 import info.kfgodel.dyna.testobjects.InterdependentTypeB;
+import info.kfgodel.jspek.api.JavaSpec;
+import info.kfgodel.jspek.api.JavaSpecRunner;
 import org.junit.runner.RunWith;
 
 import static info.kfgodel.function.MemoizedSupplier.memoized;

@@ -1,6 +1,5 @@
 package info.kfgodel.dyna;
 
-import ar.com.dgarcia.javaspec.api.contexts.TestContext;
 import info.kfgodel.dyna.api.creator.ObjectCreator;
 import info.kfgodel.dyna.api.environment.Environment;
 import info.kfgodel.dyna.api.repo.StateRepository;
@@ -13,6 +12,7 @@ import info.kfgodel.dyna.testobjects.Lycanthrope;
 import info.kfgodel.dyna.testobjects.SimpleTestObject;
 import info.kfgodel.dyna.testobjects.TextMarquee;
 import info.kfgodel.dyna.testobjects.Wolf;
+import info.kfgodel.jspek.api.contexts.TestContext;
 
 import java.util.Map;
 import java.util.function.Supplier;

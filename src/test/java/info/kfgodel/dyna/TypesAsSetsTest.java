@@ -1,11 +1,11 @@
 package info.kfgodel.dyna;
 
-import ar.com.dgarcia.javaspec.api.JavaSpec;
-import ar.com.dgarcia.javaspec.api.JavaSpecRunner;
 import info.kfgodel.dyna.impl.DefaultEnvironment;
 import info.kfgodel.dyna.testobjects.ClarkKent;
 import info.kfgodel.dyna.testobjects.GlassesWearer;
 import info.kfgodel.dyna.testobjects.Superman;
+import info.kfgodel.jspek.api.JavaSpec;
+import info.kfgodel.jspek.api.JavaSpecRunner;
 import org.assertj.core.util.Maps;
 import org.junit.runner.RunWith;
 
