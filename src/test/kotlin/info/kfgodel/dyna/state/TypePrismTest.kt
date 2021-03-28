@@ -1,4 +1,4 @@
-package info.kfgodel.dyna
+package info.kfgodel.dyna.state
 
 import info.kfgodel.dyna.api.exceptions.DynaWorldException
 import info.kfgodel.dyna.impl.DefaultEnvironment
