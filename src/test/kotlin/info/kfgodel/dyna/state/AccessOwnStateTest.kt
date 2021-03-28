@@ -11,7 +11,7 @@ import org.junit.runner.RunWith
  * Date: 28/3/21 - 02:00
  */
 @RunWith(JavaSpecRunner::class)
-class ReadmeExampleKotlinTest : KotlinSpec() {
+class AccessOwnStateTest : KotlinSpec() {
   override fun define() {
     describe("a dyna object") {
       val objectWithState by let {DefaultEnvironment.create().creator().create(
