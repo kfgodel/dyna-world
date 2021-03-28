@@ -1,5 +1,6 @@
 package info.kfgodel.dyna.dependency;
 
+import com.google.common.base.Suppliers;
 import info.kfgodel.dyna.WorldTestContext;
 import info.kfgodel.dyna.impl.DefaultEnvironment;
 import info.kfgodel.dyna.testobjects.InterdependentTypeA;
@@ -8,7 +9,6 @@ import info.kfgodel.jspek.api.JavaSpec;
 import info.kfgodel.jspek.api.JavaSpecRunner;
 import org.junit.runner.RunWith;
 
-import static info.kfgodel.function.MemoizedSupplier.memoized;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
@@ -21,10 +21,10 @@ public class CyclicDependencyTest extends JavaSpec<WorldTestContext> {
   public void define() {
     describe("two objects that depend on each other", () -> {
       beforeEach(()->{
-        test().environment().define(InterdependentTypeA.class, memoized(()->
+        test().environment().define(InterdependentTypeA.class, Suppliers.memoize(()->
           test().environment().creator().create(InterdependentTypeA.class)
         ));
-        test().environment().define(InterdependentTypeB.class, memoized(()->
+        test().environment().define(InterdependentTypeB.class, Suppliers.memoize(()->
           test().environment().creator().create(InterdependentTypeB.class)
         ));
       });

@@ -1,5 +1,6 @@
 package info.kfgodel.dyna.impl.creator;
 
+import com.google.common.base.Suppliers;
 import info.kfgodel.dyna.api.DynaObject;
 import info.kfgodel.dyna.api.environment.Environment;
 import info.kfgodel.dyna.impl.creator.handlers.EnvironmentAccessHandler;
@@ -14,7 +15,6 @@ import info.kfgodel.dyna.impl.proxy.handlers.HashcodeMethodHandler;
 
 import java.util.Map;
 
-import static info.kfgodel.function.MemoizedSupplier.memoized;
 
 /**
  * This class is necessary to solve the paradox of who creates the creator.<br>
@@ -38,7 +38,7 @@ public class ProtoCreator implements DynaObjectCreator {
 
   private void initializeDependencies() {
     // We want only one instantiator available for this and created instance
-    environment().define(DynaTypeInstantiator.class, memoized(this::createInstantiator));
+    environment().define(DynaTypeInstantiator.class, Suppliers.memoize(this::createInstantiator));
   }
 
   private DynaTypeInstantiator createInstantiator() {
