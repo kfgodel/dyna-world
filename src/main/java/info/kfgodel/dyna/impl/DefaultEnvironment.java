@@ -16,7 +16,7 @@ import java.util.function.Supplier;
 import static info.kfgodel.function.MemoizedSupplier.memoized;
 
 /**
- * This class represents the default environment in which objects exists and colaborate between each other
+ * This class represents the default environment in which objects exists and collaborate between each other
  * inside the same VM
  *
  * Date: 04/05/19 - 00:03

@@ -17,8 +17,8 @@ import java.util.function.Supplier;
 public interface Environment {
 
   /**
-   * Finds an instance of the asked type in this enviroment.<br>
-   *   A previous definition to must be declared in this enviroment for the instance to exist
+   * Finds an instance in this enviroment for the asked type.<br>
+   *   A previous definition must be declared in this enviroment for the instance to exist
    * @param expectedType The type of expected object
    * @param <T> The type of returned object
    * @return An instance of the asked type taken from this environment

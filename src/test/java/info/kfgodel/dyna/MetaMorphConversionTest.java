@@ -48,7 +48,7 @@ public class MetaMorphConversionTest extends JavaSpec<WorldTestContext> {
           assertThat(test().metamorph().getDead()).isTrue();
         });
 
-        it("allows different behaviors", () -> {
+        it("allows different behavior for the same state", () -> {
           assertThat(test().metamorph().getJumpHeight()).isEqualTo(81);
           assertThat(test().morphed().getJumpHeight()).isEqualTo(326);
         });

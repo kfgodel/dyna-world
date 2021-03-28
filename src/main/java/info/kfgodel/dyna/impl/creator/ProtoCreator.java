@@ -22,7 +22,7 @@ import static info.kfgodel.function.MemoizedSupplier.memoized;
  * itself are created following the same principles.<br>
  * The only object that is not created out of a creator is the environment which is a pre-requisite for the rest.<br>
  * <br>
- * Because we want the proto-creator and the real instance to behave as close as possible both share the hierarchy
+ * Because we want the proto-creator and the real creator instance to behave as close as possible both share the hierarchy
  *
  * Date: 04/05/19 - 13:28
  */

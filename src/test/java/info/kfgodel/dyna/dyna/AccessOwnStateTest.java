@@ -18,7 +18,7 @@ public class AccessOwnStateTest extends JavaSpec<WorldTestContext> {
     describe("a dyna object", () -> {
       test().objectWithState(() -> DefaultEnvironment.create().creator().create(SelfStateObject.class));
 
-      it("can instrospect its own state map", () -> {
+      it("can introspect its own state map", () -> {
         assertThat(test().objectWithState().getPropertyCount()).isEqualTo(1);
 
         test().objectWithState().setName("Pepe");
