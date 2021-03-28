@@ -6,12 +6,12 @@ import info.kfgodel.dyna.api.repo.StateRepository;
 import info.kfgodel.dyna.api.repo.TypePrism;
 import info.kfgodel.dyna.dyna.SelfStateObject;
 import info.kfgodel.dyna.testobjects.ClarkKent;
+import info.kfgodel.dyna.testobjects.HumanLycanthrope;
 import info.kfgodel.dyna.testobjects.InterdependentTypeA;
 import info.kfgodel.dyna.testobjects.InterdependentTypeB;
-import info.kfgodel.dyna.testobjects.Lycanthrope;
 import info.kfgodel.dyna.testobjects.SimpleTestObject;
 import info.kfgodel.dyna.testobjects.TextMarquee;
-import info.kfgodel.dyna.testobjects.Wolf;
+import info.kfgodel.dyna.testobjects.WolfLycanthrope;
 import info.kfgodel.jspek.api.contexts.TestContext;
 
 import java.util.Map;
@@ -54,11 +54,11 @@ public interface WorldTestContext extends TestContext {
   Map<String, Object> otherInitialState();
   void otherInitialState(Supplier<Map<String, Object>> definition);
 
-  Lycanthrope metamorph();
-  void metamorph(Supplier<Lycanthrope> definition);
+  HumanLycanthrope metamorph();
+  void metamorph(Supplier<HumanLycanthrope> definition);
 
-  Wolf morphed();
-  void morphed(Supplier<Wolf> definition);
+  WolfLycanthrope morphed();
+  void morphed(Supplier<WolfLycanthrope> definition);
 
   StateRepository repository();
   void repository(Supplier<StateRepository> definition);

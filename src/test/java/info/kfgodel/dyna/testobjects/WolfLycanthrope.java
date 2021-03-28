@@ -7,7 +7,7 @@ import info.kfgodel.dyna.api.DynaObject;
  *
  * Date: 05/05/19 - 19:28
  */
-public interface Wolf extends DynaObject {
+public interface WolfLycanthrope extends DynaObject {
 
   String getName();
   int getHeight();

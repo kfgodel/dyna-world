@@ -7,7 +7,7 @@ import info.kfgodel.dyna.api.Metamorph;
  * <p>
  * Date: 05/05/19 - 19:24
  */
-public interface Lycanthrope extends Metamorph {
+public interface HumanLycanthrope extends Metamorph {
 
   String getName();
   int getHeight();
