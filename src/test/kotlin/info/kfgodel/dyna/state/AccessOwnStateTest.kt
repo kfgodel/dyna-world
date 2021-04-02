@@ -1,4 +1,4 @@
-package info.kfgodel.dyna
+package info.kfgodel.dyna.state
 
 import info.kfgodel.dyna.dyna.SelfStateObject
 import info.kfgodel.dyna.impl.DefaultEnvironment
@@ -20,13 +20,13 @@ class AccessOwnStateTest : KotlinSpec() {
 
       it("can introspect its own state map") {
         Assertions.assertThat(objectWithState().getPropertyCount()).isEqualTo(1)
-        objectWithState().setName("Pepe")
+        objectWithState().name = "Pepe"
         Assertions.assertThat(objectWithState().getPropertyCount()).isEqualTo(2)
       }
       it("can change a method definition") {
-        Assertions.assertThat(objectWithState().getName()).isNull()
+        Assertions.assertThat(objectWithState().name).isNull()
         objectWithState().changeGetNameDefinition()
-        Assertions.assertThat(objectWithState().getName()).isEqualTo("a hardcoded name")
+        Assertions.assertThat(objectWithState().name).isEqualTo("a hardcoded name")
       }
     }
 

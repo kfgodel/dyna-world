@@ -1,4 +1,4 @@
-package info.kfgodel.dyna
+package info.kfgodel.dyna.state
 
 import com.google.common.collect.ImmutableMap
 import com.google.common.collect.Maps
