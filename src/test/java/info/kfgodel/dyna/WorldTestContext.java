@@ -4,7 +4,7 @@ import info.kfgodel.dyna.api.creator.ObjectCreator;
 import info.kfgodel.dyna.api.environment.Environment;
 import info.kfgodel.dyna.api.repo.StateRepository;
 import info.kfgodel.dyna.api.repo.TypePrism;
-import info.kfgodel.dyna.dyna.SelfStateObject;
+import info.kfgodel.dyna.objects.SelfStateObject;
 import info.kfgodel.dyna.testobjects.ClarkKent;
 import info.kfgodel.dyna.testobjects.HumanLycanthrope;
 import info.kfgodel.dyna.testobjects.InterdependentTypeA;

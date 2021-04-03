@@ -1,7 +1,7 @@
 package info.kfgodel.dyna.state
 
-import info.kfgodel.dyna.dyna.SelfStateObject
 import info.kfgodel.dyna.impl.DefaultEnvironment
+import info.kfgodel.dyna.objects.SelfStateObject
 import info.kfgodel.jspek.api.JavaSpecRunner
 import info.kfgodel.jspek.api.KotlinSpec
 import org.assertj.core.api.Assertions
