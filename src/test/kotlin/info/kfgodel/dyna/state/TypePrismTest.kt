@@ -2,10 +2,10 @@ package info.kfgodel.dyna.state
 
 import info.kfgodel.dyna.api.exceptions.DynaWorldException
 import info.kfgodel.dyna.impl.DefaultEnvironment
-import info.kfgodel.dyna.testobjects.ClarkKent
-import info.kfgodel.dyna.testobjects.GlassCarrier
-import info.kfgodel.dyna.testobjects.GlassesWearer
-import info.kfgodel.dyna.testobjects.Superman
+import info.kfgodel.dyna.objects.ClarkKent
+import info.kfgodel.dyna.objects.GlassCarrier
+import info.kfgodel.dyna.objects.GlassesWearer
+import info.kfgodel.dyna.objects.Superman
 import info.kfgodel.jspek.api.JavaSpecRunner
 import info.kfgodel.jspek.api.KotlinSpec
 import org.assertj.core.api.Assertions
@@ -28,11 +28,11 @@ class TypePrismTest : KotlinSpec() {
         itThrows(
           DynaWorldException::class.java, "if an undefined type is asked",
           {
-            prism().getInstancesOf(Superman::class.java)
+            prism().getInstancesOf(ClarkKent::class.java)
           }
         ) { e: DynaWorldException? ->
           Assertions.assertThat(e)
-            .hasMessage("Type[interface info.kfgodel.dyna.testobjects.Superman] has no predicate to define which objects are included")
+            .hasMessage("Type[interface info.kfgodel.dyna.objects.ClarkKent] has no predicate to define which objects are included")
         }
 
         describe("when a type is defined") {

@@ -2,8 +2,8 @@ package info.kfgodel.dyna.dependency
 
 import com.google.common.base.Suppliers
 import info.kfgodel.dyna.impl.DefaultEnvironment
-import info.kfgodel.dyna.testobjects.InterdependentTypeA
-import info.kfgodel.dyna.testobjects.InterdependentTypeB
+import info.kfgodel.dyna.objects.InterdependentTypeA
+import info.kfgodel.dyna.objects.InterdependentTypeB
 import info.kfgodel.jspek.api.JavaSpecRunner
 import info.kfgodel.jspek.api.KotlinSpec
 import org.assertj.core.api.Assertions

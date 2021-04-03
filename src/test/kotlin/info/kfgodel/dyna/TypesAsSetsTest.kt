@@ -2,9 +2,9 @@ package info.kfgodel.dyna
 
 import info.kfgodel.dyna.api.environment.Environment
 import info.kfgodel.dyna.impl.DefaultEnvironment
-import info.kfgodel.dyna.testobjects.ClarkKent
-import info.kfgodel.dyna.testobjects.GlassesWearer
-import info.kfgodel.dyna.testobjects.Superman
+import info.kfgodel.dyna.objects.ClarkKent
+import info.kfgodel.dyna.objects.GlassesWearer
+import info.kfgodel.dyna.objects.Superman
 import info.kfgodel.jspek.api.JavaSpecRunner
 import info.kfgodel.jspek.api.KotlinSpec
 import org.assertj.core.api.Assertions.assertThat

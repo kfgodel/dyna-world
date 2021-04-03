@@ -3,8 +3,8 @@ package info.kfgodel.dyna
 import com.google.common.collect.ImmutableMap
 import com.google.common.collect.Maps
 import info.kfgodel.dyna.impl.DefaultEnvironment
-import info.kfgodel.dyna.testobjects.HumanLycanthrope
-import info.kfgodel.dyna.testobjects.WolfLycanthrope
+import info.kfgodel.dyna.objects.HumanLycanthrope
+import info.kfgodel.dyna.objects.WolfLycanthrope
 import info.kfgodel.jspek.api.JavaSpecRunner
 import info.kfgodel.jspek.api.KotlinSpec
 import org.assertj.core.api.Assertions
@@ -40,18 +40,18 @@ class MetamorphConversionTest : KotlinSpec() {
               Assertions.assertThat<WolfLycanthrope>(morphed()).isNotInstanceOf(HumanLycanthrope::class.java)
             }
             it("shares its state with the morphed object") {
-              Assertions.assertThat(morphed().getName()).isEqualTo("Scott Howard")
+              Assertions.assertThat(morphed().name).isEqualTo("Scott Howard")
               Assertions.assertThat<String, Any>(metamorph().getInternalState())
                 .isSameAs(morphed().getInternalState())
             }
             it("is affected by morphed object state changes") {
               morphed().receiveSilverBullet()
-              Assertions.assertThat(morphed().getDead()).isTrue()
-              Assertions.assertThat(metamorph().getDead()).isTrue()
+              Assertions.assertThat(morphed().dead).isTrue()
+              Assertions.assertThat(metamorph().dead).isTrue()
             }
             it("allows different behavior for the same state") {
-              Assertions.assertThat(metamorph().getJumpHeight()).isEqualTo(81)
-              Assertions.assertThat(morphed().getJumpHeight()).isEqualTo(326)
+              Assertions.assertThat(metamorph().jumpHeight).isEqualTo(81)
+              Assertions.assertThat(morphed().jumpHeight).isEqualTo(326)
             }
             it("is equal and has same hashcode as morphed object") {
               Assertions.assertThat<HumanLycanthrope>(metamorph()).isEqualTo(morphed())

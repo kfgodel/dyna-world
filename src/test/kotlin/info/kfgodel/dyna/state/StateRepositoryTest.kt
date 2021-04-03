@@ -3,7 +3,7 @@ package info.kfgodel.dyna.state
 import info.kfgodel.dyna.api.DynaObject
 import info.kfgodel.dyna.api.creator.ObjectCreator
 import info.kfgodel.dyna.impl.DefaultEnvironment
-import info.kfgodel.dyna.testobjects.SimpleTestObject
+import info.kfgodel.dyna.objects.SimpleTestObject
 import info.kfgodel.jspek.api.JavaSpecRunner
 import info.kfgodel.jspek.api.KotlinSpec
 import org.assertj.core.api.Assertions
