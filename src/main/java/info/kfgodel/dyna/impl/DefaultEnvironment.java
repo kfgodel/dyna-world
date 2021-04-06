@@ -1,6 +1,7 @@
 package info.kfgodel.dyna.impl;
 
 import com.google.common.base.Suppliers;
+import info.kfgodel.dyna.api.DynaObject;
 import info.kfgodel.dyna.api.creator.ObjectCreator;
 import info.kfgodel.dyna.api.environment.Environment;
 import info.kfgodel.dyna.api.exceptions.DynaWorldException;
@@ -8,6 +9,15 @@ import info.kfgodel.dyna.api.repo.StateRepository;
 import info.kfgodel.dyna.api.repo.TypePrism;
 import info.kfgodel.dyna.impl.creator.DynaObjectCreator;
 import info.kfgodel.dyna.impl.creator.ProtoCreator;
+import info.kfgodel.dyna.impl.creator.handlers.EnvironmentAccessHandler;
+import info.kfgodel.dyna.impl.creator.handlers.InternalStateMethodHandler;
+import info.kfgodel.dyna.impl.creator.handlers.StateBasedEqualsMethodHandler;
+import info.kfgodel.dyna.impl.creator.handlers.StateBasedHashcodeMethodHandler;
+import info.kfgodel.dyna.impl.instantiator.DefaultConfiguration;
+import info.kfgodel.dyna.impl.instantiator.DynaTypeInstantiator;
+import info.kfgodel.dyna.impl.proxy.handlers.EqualsMethodHandler;
+import info.kfgodel.dyna.impl.proxy.handlers.GetterPropertyHandler;
+import info.kfgodel.dyna.impl.proxy.handlers.HashcodeMethodHandler;
 import info.kfgodel.dyna.impl.repo.DefaultRepository;
 
 import java.util.HashMap;
@@ -41,6 +51,7 @@ public class DefaultEnvironment implements Environment {
   }
 
   private void initialize() {
+    this.define(DynaTypeInstantiator.class, Suppliers.memoize(this::createInstantiator));
     this.define(ObjectCreator.class, Suppliers.memoize(() ->
       // Called only once
       ProtoCreator.from(this).create(DynaObjectCreator.class)
@@ -51,6 +62,17 @@ public class DefaultEnvironment implements Environment {
       this.provide(ObjectCreator.class).create(TypePrism.class)
     ));
   }
+
+  private DynaTypeInstantiator createInstantiator() {
+    DefaultConfiguration configuration = DefaultConfiguration.create()
+      .withInterface(DynaObject.class)
+      .addBefore(GetterPropertyHandler.class, InternalStateMethodHandler.create())
+      .addBefore(GetterPropertyHandler.class, EnvironmentAccessHandler.create(()-> this))
+      .addInsteadOf(EqualsMethodHandler.class, StateBasedEqualsMethodHandler.create())
+      .addInsteadOf(HashcodeMethodHandler.class, StateBasedHashcodeMethodHandler.create());
+    return DynaTypeInstantiator.create(configuration);
+  }
+
 
   public static DefaultEnvironment create() {
     DefaultEnvironment environment = new DefaultEnvironment();

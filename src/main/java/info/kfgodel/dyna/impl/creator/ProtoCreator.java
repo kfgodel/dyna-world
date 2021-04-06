@@ -1,17 +1,6 @@
 package info.kfgodel.dyna.impl.creator;
 
-import com.google.common.base.Suppliers;
-import info.kfgodel.dyna.api.DynaObject;
 import info.kfgodel.dyna.api.environment.Environment;
-import info.kfgodel.dyna.impl.creator.handlers.EnvironmentAccessHandler;
-import info.kfgodel.dyna.impl.creator.handlers.InternalStateMethodHandler;
-import info.kfgodel.dyna.impl.creator.handlers.StateBasedEqualsMethodHandler;
-import info.kfgodel.dyna.impl.creator.handlers.StateBasedHashcodeMethodHandler;
-import info.kfgodel.dyna.impl.instantiator.DefaultConfiguration;
-import info.kfgodel.dyna.impl.instantiator.DynaTypeInstantiator;
-import info.kfgodel.dyna.impl.proxy.handlers.EqualsMethodHandler;
-import info.kfgodel.dyna.impl.proxy.handlers.GetterPropertyHandler;
-import info.kfgodel.dyna.impl.proxy.handlers.HashcodeMethodHandler;
 
 import java.util.Map;
 
@@ -36,25 +25,9 @@ public class ProtoCreator implements DynaObjectCreator {
     return this.environment;
   }
 
-  private void initializeDependencies() {
-    // We want only one instantiator available for this and created instance
-    environment().define(DynaTypeInstantiator.class, Suppliers.memoize(this::createInstantiator));
-  }
-
-  private DynaTypeInstantiator createInstantiator() {
-    DefaultConfiguration configuration = DefaultConfiguration.create()
-      .withInterface(DynaObject.class)
-      .addBefore(GetterPropertyHandler.class, InternalStateMethodHandler.create())
-      .addBefore(GetterPropertyHandler.class, EnvironmentAccessHandler.create(this::environment))
-      .addInsteadOf(EqualsMethodHandler.class, StateBasedEqualsMethodHandler.create())
-      .addInsteadOf(HashcodeMethodHandler.class, StateBasedHashcodeMethodHandler.create());
-    return DynaTypeInstantiator.create(configuration);
-  }
-
-  public static ProtoCreator from(Environment environment) {
+    public static ProtoCreator from(Environment environment) {
     ProtoCreator creator = new ProtoCreator();
     creator.environment = environment;
-    creator.initializeDependencies();
     return creator;
   }
 
